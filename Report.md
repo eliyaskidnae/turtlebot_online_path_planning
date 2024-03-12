@@ -65,9 +65,15 @@ if whether to use RRT* algorithm (is_RRT_star) is enabled the following function
 2. **cost function**:
    - In the RRT algorithm, the cost function is used to determine the optimal parent node for a newly added node within a certain radius. The goal of the cost function is to select the parent node that minimizes the overall cost of reaching the new node from the tree's root node while considering the constraints of the problem, such as collision avoidance.
    
-### Controller 
-the controller continuously adjusts the velocity commands sent to the robot based on its current state and the desired goal, allowing it to navigate effectively towards the target position while considering factors such as distance, orientation, and obstacles.Proportional control is employed to adjust the control signals (linear and angular velocities) based on the magnitude of the error. The control gains (Kv and Kw) determine how aggressively the controller responds to errors.
-Based on the error values, the controller determines the appropriate linear and angular velocities to apply to the robot. We include logic to handle special cases or conditions, such as when the orientation error exceeds a certain threshold. In such cases, the controller may adjust the control signals to ensure stable and efficient operation.It stops the linear velocity (v_d = 0) and increases the angular velocity (w_d) to facilitate turning towards the goal direction more quickly.
+### Controller  
+The controller continuously adjusts the velocity commands sent to the robot based on its current state and the desired goal, allowing it to navigate effectively towards the target position and orientation while considering factors such as distance, orientation, and obstacles. Proportional control is employed to adjust the control signals (linear and angular velocities) based on the errors. Using the controller, the robot's linear and angular velocities are determined based on the distance remaining to reach the next waypoint and the desired orientation. The control gains, Kv and Kw, determine how the robot should move linearly and angularly. When the controller is applied to the robot, the orientation is controlled before distance, to prevent sudden shifts in orientation that may cause the robot to deviate from the planned path if the linear part is corrected first. As long as the distance from the current pose to the next target pose is higher than the tolerance (0.2 in our case), the robot's linear and angular velocities are controlled by Kv and Kw, respectively.
+
+v_d  = Kv * d, where *d* is the distance between the current pose and the next waypoint the robot is moving towards.
+
+w_d = Kw * θ, where *θ* is the orientation error to the desired pose of the robot
+
+We include logic to handle special cases or conditions, such as when the orientation error exceeds a certain threshold, 0.1 radians(5.8 degrees). In such cases, the controller may adjust the control signals to ensure stable and efficient operation.It stops the linear velocity (v_d = 0) and increases the angular velocity (w_d).
+This is to facilitate turning towards the goal direction more quickly, when the threshold is so small the robot moves in a correct way as it adjusts at every step when this small angle is happen. So we set a threshold value of o.1 radians so the robot adjusts its orientation as long as the orientaion error is higher than the threshold. 
 
 
 ### To Do Implementations and Other in Ros Node 
