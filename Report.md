@@ -1,17 +1,29 @@
-# Online Path Planner lab1
+# <center>LAB1: Oneline Path Planning</center>
 
-### Group Members 
-   1. Eliyas Kidanemariam Abraha - u1992469
-   2. Goitom Leaku -U1985499
+## 👥 Group Members <a name="authors"></a>
+👤 **Eliyas Kidanemariam Abraha**<br>
+u1992469@campus.udg.edu
 
-## Table of Contents
-1. [Introduction](#introduction)
-2. [Implementation](#features)
-3. [Installation](#installation)
-4. [Usage](#usage)
-5. [Graph ](#contributing)
-6. [Demo Video](#license)
+👤 **Goitom Leaku**<br>
+U1985499@campus.udg.edu
 
+---
+
+## 📗 Table of Contents
+
+- [Introduction](#introduction)
+- [Implementation](#implementation)
+  - [State Validity Checker](#state-validity-checker)
+  - [RRT Planner](#rrt-planner)
+  - [Controller](#controller)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Graph](#graph)
+- [Demo Video](#demo-video)
+- [Conclusion](#conclusion)
+
+ 
+  - 
 ## Introduction
 The lab integrated concepts from occupancy grid mapping and path planning to navigate the robot from its current position to a goal position while avoiding obstacles in the environment. This report presents an overview of the project, its architecture, implementation details, and the delivered package.
 
