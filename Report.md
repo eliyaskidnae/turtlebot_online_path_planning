@@ -120,28 +120,45 @@ List and describe the key features of the project, such as:
 - Compatibility with different platforms or devices
 
 ## Installation
-Describe how to install or set up the project to view or interact with the images and animations. Include any necessary dependencies, software, or hardware requirements.
+To sucessfully work this project, the following software should be first installed.
+
+-ROS1 NOETIC
+
+-Turtlebot3
+
+-Octomap Server
+
+-Gazebo
+
+
+
+
+
 
 ## Usage
-Provide instructions on how to use or interact with the images and animations. This might include:
-- How to open or access the images/animations
-- How to navigate through the content
-- Any controls or options available to the user
+To run this project the fellowing steps should be follwed.
 
-## Contributing
-Outline guidelines for contributing to the project, such as how others can submit new images/animations, suggest improvements, or report issues.
+*copy this file to your workspace
 
-## License
-Specify the license under which the project is distributed. This could be an open-source license like MIT or GPL, or a custom license. Include any terms or conditions for using or distributing the images/animations.
+-cd catkin_ws/
 
-## Additional Sections (Optional)
-Depending on the nature of your project, you may want to include additional sections such as:
+-cd path_project
 
-- Examples: Showcase example images or animations included in the project.
-- Customization: Provide instructions on how users can customize or modify the images/animations.
-- Resources: List any additional resources or references related to images, animations, or the project topic.
-- Credits: Acknowledge individuals or organizations who contributed images, animations, or other assets to the project.
-- Support: Offer contact information or links to support channels for users who have questions or issues related to the project.
+-cd src/
+
+-chmod +x*node.py
+
+
+
+
+## Run visualizer and Simulator
+
+roslaunch turtlebot_online_path_planning gazebo.launch
+
+Run turtlebot3_online_path_planning_node.py
+
+
+
 
 ## Screenshots/GIFs (Optional)
 Include screenshots or GIFs to visually demonstrate the images/animations included in the project. This can help users understand what to expect and encourage them to explore further.
@@ -149,11 +166,6 @@ Include screenshots or GIFs to visually demonstrate the images/animations includ
 ## Troubleshooting (Optional)
 Provide solutions to common issues or errors that users may encounter while accessing or viewing the images/animations.
 
-## Version History (Optional)
-Keep track of changes or updates made to the project over time. Include version numbers, dates, and summaries of changes.
-
-## Feedback
-Encourage users to provide feedback on the project, whether it's through GitHub issues, email, or other channels.
 
 ## Conclusion
-Conclude with any final thoughts, recommendations, or next steps related to the project.
+
