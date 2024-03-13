@@ -64,6 +64,25 @@ if whether to use RRT* algorithm (is_RRT_star) is enabled the following function
    
 2. **cost function**:
    - In the RRT algorithm, the cost function is used to determine the optimal parent node for a newly added node within a certain radius. The goal of the cost function is to select the parent node that minimizes the overall cost of reaching the new node from the tree's root node while considering the constraints of the problem, such as collision avoidance.
+  
+**Planner Parameters**
+
+**dominion :**
+Dominion is the range at which the random is generated, it should be at least equal or bigger than the map. So when a random is generated the range is given by the dominion.
+
+**Delta_q :**
+This is an incremental distance by which the tree grows towards the randomly generated point in each iteration from the nearest node. If it is smaller it will take much time to reach the goal, we used 3 as delta_q.
+
+**Radius :**
+Redius is used in RRTStar to search for nodes which are within range for checking the parent node and rewiring. we take 3 as a redius for RRTStar to search a nodes with in this distance.
+
+**P :**
+ This parameter determines the probability of the randomly generated configuration being selected as the goal configuration. Essentially, if a randomly generated value is less than p, the goal configuration is chosen, otherwise, a random configuration within the search space is generated, for our case we took 0.2. 
+
+ **Max_Iterations:**
+ This is the maximum the planner is iterated to generate the path from the start to the goal, if the path is found the path is returned else there is no path found.
+ 
+ 
    
 ### Controller  
 The controller continuously adjusts the velocity commands sent to the robot based on its current state and the desired goal, allowing it to navigate effectively towards the target position and orientation while considering factors such as distance, orientation, and obstacles. Proportional control is employed to adjust the control signals (linear and angular velocities) based on the errors. Using the controller, the robot's linear and angular velocities are determined based on the distance remaining to reach the next waypoint and the desired orientation. The control gains, Kv and Kw, determine how the robot should move linearly and angularly. When the controller is applied to the robot, the orientation is controlled before distance, to prevent sudden shifts in orientation that may cause the robot to deviate from the planned path if the linear part is corrected first. As long as the distance from the current pose to the next target pose is higher than the tolerance (0.2 in our case), the robot's linear and angular velocities are controlled by Kv and Kw, respectively.
