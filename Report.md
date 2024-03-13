@@ -67,22 +67,15 @@ if whether to use RRT* algorithm (is_RRT_star) is enabled the following function
   
 **Planner Parameters**
 
-**dominion :**
-Dominion is the range at which the random is generated, it should be at least equal or bigger than the map. So when a random is generated the range is given by the dominion.
+**Dominion:** Dominion represents the range within which random configurations are generated during the planning process. It should be at least equal to or larger than the map size to ensure comprehensive coverage of the search space.
 
-**Delta_q :**
-This is an incremental distance by which the tree grows towards the randomly generated point in each iteration from the nearest node. If it is smaller it will take much time to reach the goal, we used 3 as delta_q.
+**Delta_q:** Delta_q denotes the incremental distance by which the tree expands towards a randomly generated point in each iteration from the nearest node. A smaller Delta_q may result in longer planning times, as the tree takes more iterations to reach the goal. In our implementation, we used a value of 3 for Delta_q.
 
-**Radius :**
-Redius is used in RRTStar to search for nodes which are within range for checking the parent node and rewiring. we take 3 as a redius for RRTStar to search a nodes with in this distance.
+**Radius:** Radius is utilized in RRT* to identify nodes within a certain distance for parent node selection and rewiring. We set the Radius to 3 in RRT* to search for nodes within this distance.
 
-**P :**
- This parameter determines the probability of the randomly generated configuration being selected as the goal configuration. Essentially, if a randomly generated value is less than p, the goal configuration is chosen, otherwise, a random configuration within the search space is generated, for our case we took 0.2. 
+**P:** The parameter P determines the probability of a randomly generated configuration being selected as the goal configuration. If the randomly generated value is less than P, the goal configuration is chosen; otherwise, a random configuration within the search space is generated. In our implementation, we selected a value of 0.2 for P.
 
- **Max_Iterations:**
- This is the maximum the planner is iterated to generate the path from the start to the goal, if the path is found the path is returned else there is no path found.
- 
- 
+**Max_Iterations:** Max_Iterations specifies the maximum number of iterations the planner undergoes to generate a path from the start to the goal. If a path is found within the maximum iterations, the path is returned; otherwise, it indicates that no path was found. We set the maximum iterations to 10,000 in our implementation.
    
 ### Controller  
 The controller continuously adjusts the velocity commands sent to the robot based on its current state and the desired goal, allowing it to navigate effectively towards the target position and orientation while considering factors such as distance, orientation, and obstacles. Proportional control is employed to adjust the control signals (linear and angular velocities) based on the errors. Using the controller, the robot's linear and angular velocities are determined based on the distance remaining to reach the next waypoint and the desired orientation. The control gains, Kv and Kw, determine how the robot should move linearly and angularly. When the controller is applied to the robot, the orientation is controlled before distance, to prevent sudden shifts in orientation that may cause the robot to deviate from the planned path if the linear part is corrected first. As long as the distance from the current pose to the next target pose is higher than the tolerance (0.2 in our case), the robot's linear and angular velocities are controlled by Kv and Kw, respectively.
