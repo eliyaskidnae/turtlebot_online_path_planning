@@ -169,3 +169,4 @@ Provide solutions to common issues or errors that users may encounter while acce
 
 ## Conclusion
 
+In conclusion, this lab gave us hands on the integration of occupancy grid mapping and path planning techniques for efficient robot navigation, through implementation of the State Validity Checker, RRT Planner, and Controller. 
